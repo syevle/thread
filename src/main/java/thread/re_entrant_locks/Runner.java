@@ -31,7 +31,9 @@ public class Runner {
         System.out.println("Woken up!");
 
         try {
+            System.out.println("firstThread :: increment :: Start");
             increment();
+            System.out.println("firstThread :: increment :: End");
         } finally {
             lock.unlock();
         }
@@ -49,7 +51,9 @@ public class Runner {
         cond.signal();
 
         try {
+            System.out.println("secondThread :: increment :: Start");
             increment();
+            System.out.println("secondThread :: increment :: End");
         } finally {
             lock.unlock();
         }
