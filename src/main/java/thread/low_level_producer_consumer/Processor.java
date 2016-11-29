@@ -20,11 +20,16 @@ public class Processor {
             synchronized (lock) {
 
                 while(list.size() == LIMIT) {
+                    System.out.println("produce :: lock.wait() call start");
                     lock.wait();
+                    System.out.println("produce :: lock.wait() call end");
                 }
-
-                list.add(value++);
+                value = value + 1;
+                list.add(value);
+                System.out.println("producer add value in List "+value+" List size is: " + list.size());
+                System.out.println("producer :: lock.notify() before");
                 lock.notify();
+                System.out.println("producer :: lock.notify() after");
             }
 
         }
@@ -39,16 +44,21 @@ public class Processor {
             synchronized (lock) {
 
                 while(list.size() == 0) {
+                    System.out.println("consume :: lock.wait() call start");
                     lock.wait();
+                    System.out.println("consume :: lock.wait() call end");
                 }
 
-                System.out.print("List size is: " + list.size());
+                System.out.println("consume :: List size is: " + list.size());
                 int value = list.removeFirst();
-                System.out.println("; value is: " + value);
+                System.out.print("; value is: " + value);
+                System.out.println("consumer :: lock.notify() before");
                 lock.notify();
+                System.out.println("consumer :: lock.notify() after");
             }
-
+            System.out.println("consumer :: Thread.sleep(random.nextInt(1000)) start");
             Thread.sleep(random.nextInt(1000));
+            System.out.println("consumer :: Thread.sleep(random.nextInt(1000)) end");
         }
     }
 }

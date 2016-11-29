@@ -49,7 +49,9 @@ public class App {
         Random random = new Random();
 
         while(true) {
-            queue.put(random.nextInt(100));
+            Integer value = random.nextInt(100);
+            queue.put(value);
+            System.out.println("Put value: " + value + "; Queue size is: " + queue.size());
         }
     }
 

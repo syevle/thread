@@ -23,12 +23,12 @@ public class Runner {
     }
 
     public void firstThread() throws InterruptedException {
+        System.out.println("firstThread :: lock.lock()");
         lock.lock();
-
-        System.out.println("Waiting ....");
+        System.out.println("firstThread :: Waiting .... cond.await() run");
         cond.await();
 
-        System.out.println("Woken up!");
+        System.out.println("firstThread :: Woken up!");
 
         try {
             System.out.println("firstThread :: increment :: Start");
@@ -36,18 +36,20 @@ public class Runner {
             System.out.println("firstThread :: increment :: End");
         } finally {
             lock.unlock();
+            System.out.println("firstThread :: lock.unlock()");
         }
     }
 
     public void secondThread() throws InterruptedException {
 
         Thread.sleep(1000);
+        System.out.println("secondThread :: lock.lock()");
         lock.lock();
 
-        System.out.println("Press the return key!");
+        System.out.println("secondThread :: Press the return key!");
         new Scanner(System.in).nextLine();
-        System.out.println("Got return key!");
-
+        System.out.println("secondThread :: Got return key!");
+        System.out.println("secondThread :: cond.signal() run");
         cond.signal();
 
         try {
@@ -56,6 +58,7 @@ public class Runner {
             System.out.println("secondThread :: increment :: End");
         } finally {
             lock.unlock();
+            System.out.println("secondThread :: lock.unlock()");
         }
     }
 
