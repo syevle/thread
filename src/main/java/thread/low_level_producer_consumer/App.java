@@ -8,7 +8,6 @@ public class App {
 
         Thread t1 = new Thread(new Runnable() {
 
-            @Override
             public void run() {
                 try {
                     processor.produce();
@@ -20,7 +19,6 @@ public class App {
 
         Thread t2 = new Thread(new Runnable() {
 
-            @Override
             public void run() {
                 try {
                     processor.consume();
