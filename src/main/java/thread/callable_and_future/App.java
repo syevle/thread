@@ -22,7 +22,6 @@ public class App {
 
         Future<Integer> future = executor.submit(new Callable<Integer>() {
 
-            @Override
             public Integer call() throws Exception {
                 Random random = new Random();
                 int duration = random.nextInt(4000);

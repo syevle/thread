@@ -16,8 +16,8 @@ class Processor {
             System.out.println("Producer thread running ....");
             System.out.println("Producer thread wait start ....");
             wait();
-            System.out.println("Producer thread wait end ....");
-            System.out.println("Resumed.");
+            System.out.println("Producer thread wait state over and Resumed for work");
+            System.out.println("produce end.");
         }
     }
 
@@ -35,6 +35,7 @@ class Processor {
             System.out.println("consume thread Thread.sleep(5000) start.");
             Thread.sleep(5000);
             System.out.println("consume thread Thread.sleep(5000) end.");
+            System.out.println("consume end.");
 
         }
     }
