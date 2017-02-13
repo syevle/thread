@@ -27,15 +27,15 @@ class Processor {
         Thread.sleep(2000);
 
         synchronized (this) {
-            System.out.println("Waiting for return key.");
+            System.out.println("consume::Waiting for return key.");
             scanner.nextLine();
-            System.out.println("Return key pressed.");
+            System.out.println("consume::Return key pressed.");
             notify();
-            System.out.println("consume thread notify call.");
-            System.out.println("consume thread Thread.sleep(5000) start.");
+            System.out.println("consume::consume thread notify call.");
+            System.out.println("consume::consume thread Thread.sleep(5000) start.");
             Thread.sleep(5000);
-            System.out.println("consume thread Thread.sleep(5000) end.");
-            System.out.println("consume end.");
+            System.out.println("consume::consume thread Thread.sleep(5000) end.");
+            System.out.println("consume::consume end.");
 
         }
     }
